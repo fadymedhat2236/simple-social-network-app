@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.fady.socialnetwork.addUserActivity"
+    android:orientation="vertical"
+    android:padding="5dp"
+    >
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter User Name"
+        android:paddingLeft="7dp"
+        android:paddingTop="10dp"
+        android:textColor="#493273"
+        android:id="@+id/addedUser"
+
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add User"
+        android:layout_gravity="end"
+        android:padding="5dp"
+        android:background="#493273"
+        android:id="@+id/addUser"
+        android:textColor="#ffffff"/>
+</LinearLayout>

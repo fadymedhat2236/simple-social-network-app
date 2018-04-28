@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Social Network</string>
+    <string name="admin">adminstrator</string>
+    <string name="user">user</string>
+    <string name="group">group</string>
+    <string name="addUser">add user</string>
+    <string name="xmlView">view network xml</string>
+</resources>

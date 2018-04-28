@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.fady.socialnetwork.MainActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#a0c5cf"
+        android:orientation="vertical"
+        android:id="@+id/add_user">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:src="@drawable/adduser"
+            android:layout_gravity="center"
+            android:layout_weight="7"
+            android:layout_marginTop="5dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text="@string/addUser"
+            android:textAllCaps="true"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:fontFamily="casual"
+            android:textColor="#08080a"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#6cde95"
+        android:orientation="vertical"
+        android:id="@+id/viewXML">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:src="@drawable/xml"
+            android:layout_gravity="center"
+            android:layout_weight="7"
+            android:layout_marginTop="5dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text="@string/xmlView"
+            android:textAllCaps="true"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:fontFamily="casual"
+            android:textColor="#08080a"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
