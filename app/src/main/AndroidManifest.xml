@@ -20,7 +20,7 @@
         <activity android:name=".groupActivity" />
         <activity android:name=".addUserActivity" />
         <activity android:name=".deleteUserActivity" />
-        <activity android:name=".usersActivity" />
+        <activity android:name=".UsersActivity" />
         <activity android:name=".userXml"></activity>
     </application>
 

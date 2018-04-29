@@ -17,8 +17,16 @@
         android:paddingLeft="7dp"
         android:paddingTop="10dp"
         android:textColor="#493273"
-        android:id="@+id/addedUser"
-
+        android:id="@+id/name"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter User Gender"
+        android:paddingLeft="7dp"
+        android:paddingTop="10dp"
+        android:textColor="#493273"
+        android:id="@+id/gender"
         />
     <Button
         android:layout_width="wrap_content"
@@ -28,5 +36,6 @@
         android:padding="5dp"
         android:background="#493273"
         android:id="@+id/addUser"
-        android:textColor="#ffffff"/>
+        android:textColor="#ffffff"
+        android:onClick="insertUser"/>
 </LinearLayout>
