@@ -16,10 +16,18 @@ public class adminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
         LinearLayout addUser=findViewById(R.id.add_user);
+        LinearLayout deleteUser=findViewById(R.id.delete_user);
         addUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i =new Intent(view.getContext(),addUserActivity.class);
+                startActivity(i);
+            }
+        });
+        deleteUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i =new Intent(view.getContext(),deleteUserActivity.class);
                 startActivity(i);
             }
         });

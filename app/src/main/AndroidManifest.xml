@@ -17,11 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".adminActivity" />
-        <activity
-            android:name=".userActivity"
-            android:label="Users" />
         <activity android:name=".groupActivity" />
         <activity android:name=".addUserActivity" />
+        <activity android:name=".deleteUserActivity" />
+        <activity android:name=".usersActivity" />
         <activity android:name=".userXml"></activity>
     </application>
 
