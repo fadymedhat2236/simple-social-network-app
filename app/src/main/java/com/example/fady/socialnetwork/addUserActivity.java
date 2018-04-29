@@ -38,16 +38,19 @@ public class addUserActivity extends AppCompatActivity {
 
     public void insertUser(View v) {
         String n = name.getText().toString().trim();
-        System.out.println(n);
         String g = gender.getText().toString().trim().toLowerCase();
-        int temp=0;
-        if (g == "male")
+        int temp;
+        if (g == "male") {
             temp = 1;
-        else if (g == "female")
+        }
+        else if (g == "female") {
             temp = 2;
-        else
+        }
+        else {
             temp = 0;
-
+        }
+        System.out.println(g);
+        System.out.println(temp);
 
         ContentValues c = new ContentValues();
         c.put(SnaContract.UsersEntry.COLUMN_USER_NAME, n);
