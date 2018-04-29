@@ -21,9 +21,9 @@ import java.util.ArrayList;
 
 public class addUserActivity extends AppCompatActivity {
 
-    EditText name;
-    EditText gender;
-    Button addUserButton;
+    private EditText name;
+    private EditText gender;
+    private Button addUserButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +38,9 @@ public class addUserActivity extends AppCompatActivity {
 
     public void insertUser(View v) {
         String n = name.getText().toString().trim();
+        System.out.println(n);
         String g = gender.getText().toString().trim().toLowerCase();
-        int temp;
+        int temp=0;
         if (g == "male")
             temp = 1;
         else if (g == "female")
@@ -50,7 +51,7 @@ public class addUserActivity extends AppCompatActivity {
 
         ContentValues c = new ContentValues();
         c.put(SnaContract.UsersEntry.COLUMN_USER_NAME, n);
-        c.put(SnaContract.UsersEntry.COLUMN_USER_GENDER, g);
+        c.put(SnaContract.UsersEntry.COLUMN_USER_GENDER, temp);
         c.put(SnaContract.UsersEntry.COLUMN_USER_NUMBER_OF_FRIENDS, 0);
         c.put(SnaContract.UsersEntry.COLUMN_USER_NUMBER_OF_POSTS, 0);
 
