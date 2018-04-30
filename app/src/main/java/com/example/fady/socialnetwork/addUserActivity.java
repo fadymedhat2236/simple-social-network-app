@@ -40,10 +40,10 @@ public class addUserActivity extends AppCompatActivity {
         String n = name.getText().toString().trim();
         String g = gender.getText().toString().trim().toLowerCase();
         int temp;
-        if (g == "male") {
+        if (g.equals("male")) {
             temp = 1;
         }
-        else if (g == "female") {
+        else if (g.equals("female")) {
             temp = 2;
         }
         else {

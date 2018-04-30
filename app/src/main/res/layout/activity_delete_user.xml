@@ -17,7 +17,7 @@
         android:paddingLeft="7dp"
         android:paddingTop="10dp"
         android:textColor="#493273"
-        android:id="@+id/addedUser"
+        android:id="@+id/to_delete_name"
 
         />
     <Button

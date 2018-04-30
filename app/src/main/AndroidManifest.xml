@@ -21,7 +21,8 @@
         <activity android:name=".addUserActivity" />
         <activity android:name=".deleteUserActivity" />
         <activity android:name=".UsersActivity" />
-        <activity android:name=".userXml"></activity>
+        <activity android:name=".userXml" />
+        <activity android:name=".postsActivity"></activity>
     </application>
 
 </manifest>

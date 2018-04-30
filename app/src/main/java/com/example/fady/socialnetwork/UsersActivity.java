@@ -1,12 +1,17 @@
 package com.example.fady.socialnetwork;
 
 import android.app.LoaderManager;
+import android.content.ContentUris;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.fady.socialnetwork.data.SnaContract;
@@ -61,6 +66,14 @@ public class UsersActivity extends AppCompatActivity
         UserAdapter usersArray=new UserAdapter(this,users);
         ListView list=findViewById(R.id.list);
         list.setAdapter(usersArray);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent=new Intent(UsersActivity.this,postsActivity.class).putExtra("<StringName>",i);
+                //String s=getIntent.getStringExtra(<StringName>);
+                startActivity(intent);
+            }
+        });
 
     }
 
