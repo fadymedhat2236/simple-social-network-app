@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.fady.socialnetwork.addUserActivity"
+    android:orientation="vertical"
+    android:padding="5dp"
+    >
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter post"
+        android:paddingLeft="7dp"
+        android:paddingTop="10dp"
+        android:textColor="#493273"
+        android:id="@+id/post_text"
+        android:inputType="textMultiLine"
+        android:minLines="5"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addPost"
+        android:layout_gravity="end"
+        android:padding="5dp"
+        android:background="#493273"
+        android:id="@+id/addPost"
+        android:textColor="#ffffff"
+        />
+</LinearLayout>

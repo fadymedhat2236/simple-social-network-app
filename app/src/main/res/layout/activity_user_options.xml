@@ -26,6 +26,7 @@
             android:background="#88ffffff"
             android:layout_margin="10dp"
             android:padding="10dp"
+            android:id="@+id/add_friends"
             >
             <ImageView
                 android:layout_width="wrap_content"
@@ -53,6 +54,7 @@
             android:background="#88ffffff"
             android:layout_margin="10dp"
             android:padding="10dp"
+            android:id="@+id/delete_friends"
             >
             <ImageView
                 android:layout_width="wrap_content"
@@ -88,6 +90,7 @@
             android:background="#88ffffff"
             android:layout_margin="10dp"
             android:padding="10dp"
+            android:id="@+id/add_post"
             >
             <ImageView
                 android:layout_width="wrap_content"
@@ -115,6 +118,7 @@
             android:background="#88ffffff"
             android:layout_margin="10dp"
             android:padding="10dp"
+            android:id="@+id/show_posts"
             >
             <ImageView
                 android:layout_width="wrap_content"

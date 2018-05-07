@@ -23,7 +23,8 @@
         <activity android:name=".UsersActivity" />
         <activity android:name=".userXml" />
         <activity android:name=".postsActivity" />
-        <activity android:name=".UserOptionsActivity"></activity>
+        <activity android:name=".UserOptionsActivity" />
+        <activity android:name=".addPostActivity"></activity>
     </application>
 
 </manifest>
