@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.fady.socialnetwork.data.SnaContract;
 import com.example.fady.socialnetwork.data.SnaDbHelper;
@@ -69,7 +70,11 @@ public class UsersActivity extends AppCompatActivity
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent=new Intent(UsersActivity.this,UserOptionsActivity.class).putExtra("name",Integer.toString(i+1));
+                ListView list=findViewById(R.id.list);
+                TextView name=view.findViewById(R.id.name);
+                String n=(String) name.getText();
+                n=n.replaceFirst("User Name : ","");
+                Intent intent=new Intent(UsersActivity.this,UserOptionsActivity.class).putExtra("name",n);
                 //i+1 was sent to fix the data index
                 startActivity(intent);
             }
