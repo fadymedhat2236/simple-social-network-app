@@ -35,7 +35,7 @@ public class deleteUserActivity extends AppCompatActivity {
         SQLiteDatabase db=dbHelper.getWritableDatabase();
         String []selectionArgs={name};
         long id=db.delete(SnaContract.UsersEntry.TABLE_NAME,SnaContract.UsersEntry.COLUMN_USER_NAME+"=?",selectionArgs);
-        if (id != -1) {
+        if (id != 0) {
 
             Toast.makeText(deleteUserActivity.this,"user "+name+" was removed",Toast.LENGTH_SHORT).show();
 

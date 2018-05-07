@@ -69,8 +69,8 @@ public class UsersActivity extends AppCompatActivity
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent=new Intent(UsersActivity.this,postsActivity.class).putExtra("<StringName>",i);
-                //String s=getIntent.getStringExtra(<StringName>);
+                Intent intent=new Intent(UsersActivity.this,UserOptionsActivity.class).putExtra("name",Integer.toString(i+1));
+                //i+1 was sent to fix the data index
                 startActivity(intent);
             }
         });

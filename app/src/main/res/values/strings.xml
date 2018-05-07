@@ -5,4 +5,8 @@
     <string name="group">group</string>
     <string name="addUser">add user</string>
     <string name="xmlView">view network xml</string>
+    <string name="addFriend">add friend</string>
+    <string name="deleteFriend">delete friend</string>
+    <string name="addPost">add post</string>
+    <string name="like">show posts</string>
 </resources>
