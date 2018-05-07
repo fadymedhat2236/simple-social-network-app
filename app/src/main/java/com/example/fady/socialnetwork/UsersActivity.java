@@ -74,7 +74,6 @@ public class UsersActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
-
     }
 
 }

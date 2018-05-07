@@ -37,8 +37,28 @@ public class SnaDbHelper extends SQLiteOpenHelper
                 + SnaContract.UsersEntry.COLUMN_USER_NUMBER_OF_FRIENDS + " INTEGER NOT NULL DEFAULT 0, "
                 + SnaContract.UsersEntry.COLUMN_USER_NUMBER_OF_POSTS + " INTEGER NOT NULL DEFAULT 0);";
 
+        String SQL_CREATE_POSTS_TABLE =  "CREATE TABLE " + SnaContract.postsEntry.TABLE_NAME + " ("
+                + SnaContract.postsEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + SnaContract.postsEntry.COLUMN_POST_TEXT + " TEXT NOT NULL, "
+                + SnaContract.postsEntry.COLUMN_POST_OWNER_ID + " INTEGER, "
+                + "FOREIGN KEY("+SnaContract.postsEntry.COLUMN_POST_OWNER_ID+")"
+                + " REFERENCES " +SnaContract.UsersEntry.TABLE_NAME+"("+SnaContract.UsersEntry._ID+")" +");";
+
+
+        String SQL_CREATE_POSTS_LIKERS_TABLE =  "CREATE TABLE " + SnaContract.postsLikes.TABLE_NAME + " ("
+                + SnaContract.postsLikes._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + SnaContract.postsLikes.COLUMN_POST_ID + " INTEGER, "
+                + SnaContract.postsLikes.COLUMN_POST_LIKER_ID + " INTEGER, "
+                + "FOREIGN KEY("+SnaContract.postsLikes.COLUMN_POST_ID+")"
+                + " REFERENCES " +SnaContract.postsEntry.TABLE_NAME+"("+SnaContract.postsEntry._ID+"), "
+                + "FOREIGN KEY("+SnaContract.postsLikes.COLUMN_POST_LIKER_ID+")"
+                + " REFERENCES " +SnaContract.postsEntry.TABLE_NAME+"("+SnaContract.UsersEntry._ID+")"
+                +");";
+
         // Execute the SQL statement
         db.execSQL(SQL_CREATE_USERS_TABLE);
+        db.execSQL(SQL_CREATE_POSTS_TABLE);
+        db.execSQL(SQL_CREATE_POSTS_LIKERS_TABLE);
     }
 
     /**

@@ -18,9 +18,20 @@ public final class SnaContract
         public static final int  GENDER_UNKNOWN =0;
         public static final int  GENDER_MALE=1;
         public static final int  GENDER_FEMALE=2;
-
-
-
+    }
+    public static final class postsEntry implements BaseColumns
+    {
+        public final static String TABLE_NAME="posts";
+        public final static String _ID=BaseColumns._ID;
+        public final static String COLUMN_POST_TEXT="postText";//text of the post
+        public final static String COLUMN_POST_OWNER_ID="postOwnerID";//foreign key to the users table
+    }
+    public static final class postsLikes implements BaseColumns
+    {
+        public final static String TABLE_NAME="postsLikes";
+        public final static String _ID=BaseColumns._ID;
+        public final static String COLUMN_POST_ID="postID";//foreign key to the posts table
+        public final static String COLUMN_POST_LIKER_ID="postLikeID";//foreign key to the users table
     }
 }
 
