@@ -67,6 +67,7 @@ public class UsersActivity extends AppCompatActivity
         UserAdapter usersArray=new UserAdapter(this,users);
         ListView list=findViewById(R.id.list);
         list.setAdapter(usersArray);
+
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -75,7 +76,7 @@ public class UsersActivity extends AppCompatActivity
                 String n=(String) name.getText();
                 n=n.replaceFirst("User Name : ","");
                 Intent intent=new Intent(UsersActivity.this,UserOptionsActivity.class).putExtra("name",n);
-                //i+1 was sent to fix the data index
+
                 startActivity(intent);
             }
         });

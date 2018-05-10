@@ -12,7 +12,7 @@ import com.example.fady.socialnetwork.data.SnaContract;
 import com.example.fady.socialnetwork.data.SnaDbHelper;
 
 public class UserOptionsActivity extends AppCompatActivity {
-
+    private String userName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +21,7 @@ public class UserOptionsActivity extends AppCompatActivity {
 
         //setting the label of the activity
      this.setTitle("this is "+name+"'s home page");
+     userName=name;
      //add friends activity
         LinearLayout AddFriends=findViewById(R.id.add_friends);
         AddFriends.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +45,7 @@ public class UserOptionsActivity extends AppCompatActivity {
         AddPosts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(v.getContext(),addPostActivity.class);
+                Intent i=new Intent(v.getContext(),addPostActivity.class).putExtra("name",userName);
                 startActivity(i);
             }
         });
@@ -54,7 +55,8 @@ public class UserOptionsActivity extends AppCompatActivity {
         ShowPosts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i=new Intent(v.getContext(),UserPosts.class).putExtra("name",userName);
+                startActivity(i);
             }
         });
 

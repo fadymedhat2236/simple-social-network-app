@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SocialNetwork.iml" filepath="$PROJECT_DIR$/SocialNetwork.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Fady\AndroidStudioProjects\SocialNetwork\data-structures-project.iml" filepath="C:\Users\Fady\AndroidStudioProjects\SocialNetwork\data-structures-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/data-structures-project.iml" filepath="$PROJECT_DIR$/data-structures-project.iml" />
     </modules>
   </component>
 </project>

@@ -21,19 +21,19 @@
         android:src="@drawable/user_man"
         android:layout_weight="1"
         android:layout_gravity="left"
+        android:id="@+id/userPhoto"
         />
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="8"
-        android:id="@+id/post_owner"
+        android:id="@+id/postOwner"
         android:text="post owner"
         android:textSize="20dp"
         android:textColor="#000000"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
         android:layout_gravity="center_vertical"/>
-
 </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -43,11 +43,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/post_text"
+            android:id="@+id/postText"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
             android:padding="5dp"
             android:textColor="#4e4d4d"
             />
+
 
         <Button
             android:id="@+id/like_button"
@@ -59,6 +60,14 @@
             android:minHeight="25dp"
             android:layout_gravity="right"
             android:layout_marginRight="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="0 likes"
+            android:textColor="#0420be"
+            android:layout_marginRight="25dp"
+            android:id="@+id/postLikes"/>
 
     </LinearLayout>
 
