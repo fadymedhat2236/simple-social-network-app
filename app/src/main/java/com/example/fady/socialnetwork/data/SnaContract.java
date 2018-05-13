@@ -33,6 +33,13 @@ public final class SnaContract
         public final static String COLUMN_POST_ID="postID";//foreign key to the posts table
         public final static String COLUMN_POST_LIKER_ID="postLikeID";//foreign key to the users table
     }
+    public static final class friendsEntry implements BaseColumns
+    {
+        public final static String TABLE_NAME="friends";
+        public final static String _ID=BaseColumns._ID;
+        public final static String COLUMN_USER="user";//foreign key to the users table
+        public final static String COLUMN_USER_FRIEND="userFriend";//foreign key to the users table
+    }
 }
 
 

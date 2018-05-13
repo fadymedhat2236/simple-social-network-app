@@ -25,7 +25,8 @@
         <activity android:name=".postsActivity" />
         <activity android:name=".UserOptionsActivity" />
         <activity android:name=".addPostActivity" />
-        <activity android:name=".UserPosts"></activity>
+        <activity android:name=".UserPosts" />
+        <activity android:name=".addFriendList"></activity>
     </application>
 
 </manifest>

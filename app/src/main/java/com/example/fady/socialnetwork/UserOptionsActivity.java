@@ -27,7 +27,8 @@ public class UserOptionsActivity extends AppCompatActivity {
         AddFriends.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i=new Intent(v.getContext(),addFriendList.class).putExtra("name",userName);
+                startActivity(i);
             }
         });
 

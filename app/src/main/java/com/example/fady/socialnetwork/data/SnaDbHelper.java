@@ -55,10 +55,21 @@ public class SnaDbHelper extends SQLiteOpenHelper
                 + " REFERENCES " +SnaContract.postsEntry.TABLE_NAME+"("+SnaContract.UsersEntry._ID+")"
                 +");";
 
+        String SQL_CREATE_FRIENDS_TABLE =  "CREATE TABLE " + SnaContract.friendsEntry.TABLE_NAME + " ("
+                + SnaContract.friendsEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + SnaContract.friendsEntry.COLUMN_USER + " INTEGER, "
+                + SnaContract.friendsEntry.COLUMN_USER_FRIEND + " INTEGER, "
+                + "FOREIGN KEY("+SnaContract.friendsEntry.COLUMN_USER+")"
+                + " REFERENCES " +SnaContract.UsersEntry.TABLE_NAME+"("+SnaContract.UsersEntry._ID+"), "
+                + "FOREIGN KEY("+SnaContract.friendsEntry.COLUMN_USER_FRIEND+")"
+                + " REFERENCES " +SnaContract.UsersEntry.TABLE_NAME+"("+SnaContract.UsersEntry._ID+")"
+                +");";
+
         // Execute the SQL statement
         db.execSQL(SQL_CREATE_USERS_TABLE);
         db.execSQL(SQL_CREATE_POSTS_TABLE);
         db.execSQL(SQL_CREATE_POSTS_LIKERS_TABLE);
+        db.execSQL(SQL_CREATE_FRIENDS_TABLE);
     }
 
     /**

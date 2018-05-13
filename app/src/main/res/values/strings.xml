@@ -9,4 +9,6 @@
     <string name="deleteFriend">delete friend</string>
     <string name="addPost">add post</string>
     <string name="like">show posts</string>
+    <string name="friendList">show friends</string>
+    <string name="suggestFriend">suggest friends</string>
 </resources>

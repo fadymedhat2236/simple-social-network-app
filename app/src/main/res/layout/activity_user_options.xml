@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
+    android:background="#445566"
     android:orientation="vertical"
     tools:context="com.example.fady.socialnetwork.UserOptionsActivity"
     >
@@ -14,7 +14,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:paddingTop="20dp"
+        android:paddingTop="5dp"
         android:paddingRight="20dp"
         android:paddingLeft="20dp"
         >
@@ -31,7 +31,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="9"
+                android:layout_weight="6"
                 android:src="@drawable/add_friend"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -59,7 +59,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="9"
+                android:layout_weight="6"
 
                 android:src="@drawable/delete_friend"/>
             <TextView
@@ -81,7 +81,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:padding="20dp">
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -95,7 +96,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="9"
+                android:layout_weight="6"
                 android:src="@drawable/add_post"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -123,7 +124,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="9"
+                android:layout_weight="6"
                 android:src="@drawable/show_posts"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -135,6 +136,71 @@
                 android:textStyle="bold"
                 android:fontFamily="casual"
                 android:text="@string/like"
+                android:textColor="#000000"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="5dp">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:background="#88ffffff"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:id="@+id/show_friends"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="6"
+                android:src="@drawable/show_friends"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:textAllCaps="true"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textStyle="bold"
+                android:fontFamily="casual"
+                android:text="@string/friendList"
+                android:textColor="#000000"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:background="#88ffffff"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:id="@+id/suggest_friend"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="6"
+                android:src="@drawable/suggest_friend"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:textAllCaps="true"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textStyle="bold"
+                android:fontFamily="casual"
+                android:text="@string/suggestFriend"
                 android:textColor="#000000"/>
         </LinearLayout>
     </LinearLayout>

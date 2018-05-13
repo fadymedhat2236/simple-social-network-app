@@ -63,6 +63,8 @@ public class addPostActivity extends AppCompatActivity {
         newPost.put(SnaContract.postsEntry.COLUMN_POST_OWNER_ID,userID);
         newPost.put(SnaContract.postsEntry.COLUMN_POST_TEXT,postText);
       long id=  db.insert(SnaContract.postsEntry.TABLE_NAME,null,newPost);
+
+
       if(id!=0)
       {
           Toast.makeText(this,"your post was added",Toast.LENGTH_SHORT).show();
