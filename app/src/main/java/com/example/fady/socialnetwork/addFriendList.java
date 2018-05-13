@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,8 +52,9 @@ public class addFriendList extends AppCompatActivity {
         Cursor c2=db.query(SnaContract.friendsEntry.TABLE_NAME,
                 projection2,
                 SnaContract.friendsEntry.COLUMN_USER+"=?",selArgs2,null,null,null);
+
       //  c2.moveToNext();
-        if(c2.getCount()==0)
+        if(!c2.moveToNext())
         {
             c2.close();
             displayAll(name);
@@ -60,9 +62,129 @@ public class addFriendList extends AppCompatActivity {
         }
         else
         {
-
+            c2.close();
+            displayNotFriends(name);
         }
 
+    }
+    void displayNotFriends(final String _name)
+    {
+        SnaDbHelper dbHelper=new SnaDbHelper(this);
+        SQLiteDatabase db=dbHelper.getReadableDatabase();
+
+        ArrayList<User> users=new ArrayList<User>();
+        ArrayList<User> myFriends=new ArrayList<>();
+        ArrayList<User> notMyFriends=new ArrayList<>();
+
+        String [] projection={
+                SnaContract.UsersEntry._ID,
+                SnaContract.UsersEntry.COLUMN_USER_NAME,
+                SnaContract.UsersEntry.COLUMN_USER_GENDER,
+                SnaContract.UsersEntry.COLUMN_USER_NUMBER_OF_POSTS,
+                SnaContract.UsersEntry.COLUMN_USER_NUMBER_OF_FRIENDS
+        };
+
+        Cursor c=db.query(SnaContract.UsersEntry.TABLE_NAME,projection,null,null,
+                null,null,null);
+        int userId=0;
+
+        while(c.moveToNext())
+        {
+            int nameColumnIndex=c.getColumnIndex(SnaContract.UsersEntry.COLUMN_USER_NAME);
+            String name=c.getString(nameColumnIndex);
+            if(name.toLowerCase().equals(_name.toLowerCase()))
+            {
+                userId=c.getInt(0);//getting the user id
+                continue;
+            }
+            int genderColumnIndex=c.getColumnIndex(SnaContract.UsersEntry.COLUMN_USER_GENDER);
+            int gender=c.getInt(genderColumnIndex);
+
+            int nofColumnIndex=c.getColumnIndex(SnaContract.UsersEntry.COLUMN_USER_NUMBER_OF_FRIENDS);
+            int nof=c.getInt(nofColumnIndex);
+
+            int nopColumnIndex=c.getColumnIndex(SnaContract.UsersEntry.COLUMN_USER_NUMBER_OF_POSTS);
+            int nop=c.getInt(nopColumnIndex);
+
+            users.add(new User(name,gender,nof,nop));
+        }
+        //finding my friends
+        String [] projection2={
+                SnaContract.friendsEntry.COLUMN_USER_FRIEND
+        };
+        String[] selArgs2={Integer.toString(userId)};
+        Cursor c2=db.query(SnaContract.friendsEntry.TABLE_NAME,
+                projection2,SnaContract.friendsEntry.COLUMN_USER+"=?",selArgs2,
+                null,null,null);
+        //now c2 has the user friends to user with id = userId
+        while(c2.moveToNext())
+        {
+            int idColumnIndex=c2.getColumnIndex(SnaContract.friendsEntry.COLUMN_USER_FRIEND);
+            int friendId=c2.getInt(idColumnIndex);
+            String[] projection3={
+                    SnaContract.UsersEntry._ID,
+                    SnaContract.UsersEntry.COLUMN_USER_NAME,
+                    SnaContract.UsersEntry.COLUMN_USER_GENDER,
+                    SnaContract.UsersEntry.COLUMN_USER_NUMBER_OF_POSTS,
+                    SnaContract.UsersEntry.COLUMN_USER_NUMBER_OF_FRIENDS
+            };
+            String[] selArgs3={
+                    Integer.toString(friendId)
+            };
+            Cursor c3=db.query(SnaContract.UsersEntry.TABLE_NAME,
+                    projection3,SnaContract.UsersEntry._ID+"=?",selArgs3,
+                    null,null,null
+                    );
+         while(c3.moveToNext()) {
+             int nameColumnIndex = c3.getColumnIndex(SnaContract.UsersEntry.COLUMN_USER_NAME);
+             String name = c3.getString(nameColumnIndex);
+
+             int genderColumnIndex = c3.getColumnIndex(SnaContract.UsersEntry.COLUMN_USER_GENDER);
+             int gender = c3.getInt(genderColumnIndex);
+
+             int nofColumnIndex = c3.getColumnIndex(SnaContract.UsersEntry.COLUMN_USER_NUMBER_OF_FRIENDS);
+             int nof = c3.getInt(nofColumnIndex);
+
+             int nopColumnIndex = c3.getColumnIndex(SnaContract.UsersEntry.COLUMN_USER_NUMBER_OF_POSTS);
+             int nop = c3.getInt(nopColumnIndex);
+             myFriends.add(new User(name,gender,nof,nop));
+         }
+            c3.close();
+
+        }
+        for(int i=0;i<users.size();i++)
+        {
+            for(int j=0;j<myFriends.size();j++)
+            {
+                if(users.get(i).getName().equals(myFriends.get(j).getName()))
+                {
+                    break;
+                }
+                if(j==myFriends.size()-1)
+                {
+                    notMyFriends.add(users.get(i));
+                }
+            }
+        }
+        UserAdapter usersArray=new UserAdapter(this,notMyFriends);
+        ListView list=findViewById(R.id.friendList);
+        list.setAdapter(usersArray);
+        c.close();
+        c2.close();
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                ListView list=findViewById(R.id.list);
+                TextView name=view.findViewById(R.id.name);
+                String _name2=(String) name.getText();
+                _name2=_name2.replaceFirst("User Name : ","");
+                //now we have the 2 friends names
+                connectFriends(_name,_name2);
+                view.setClickable(true);
+                view.setEnabled(true);
+
+            }
+        });
     }
     void  displayAll(final String _name)
     {
@@ -163,6 +285,11 @@ public class addFriendList extends AppCompatActivity {
         newFriend.put(SnaContract.friendsEntry.COLUMN_USER,userId1);
         newFriend.put(SnaContract.friendsEntry.COLUMN_USER_FRIEND,userId2);
         long id=  db.insert(SnaContract.friendsEntry.TABLE_NAME,null,newFriend);
+        //adding another row for friend2 that is now friend to user
+        ContentValues newFriend_viceVersa=new ContentValues();
+        newFriend_viceVersa.put(SnaContract.friendsEntry.COLUMN_USER,userId2);
+        newFriend_viceVersa.put(SnaContract.friendsEntry.COLUMN_USER_FRIEND,userId1);
+        db.insert(SnaContract.friendsEntry.TABLE_NAME,null,newFriend_viceVersa);
         if(id!=0)
         {
             Toast.makeText(this,"the selected friend was added",Toast.LENGTH_SHORT).show();
