@@ -76,5 +76,6 @@ public class userXml extends AppCompatActivity {
 //
 //
 //        }
+        c.close();
     }
 };

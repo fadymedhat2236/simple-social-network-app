@@ -52,6 +52,7 @@ public class UserPosts extends AppCompatActivity {
         PostAdapter postsArray=new PostAdapter(this,posts);
         ListView list=findViewById(R.id.postList);
         list.setAdapter(postsArray);
+        c.close();
 
     }
 }

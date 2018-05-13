@@ -67,6 +67,7 @@ public class UsersActivity extends AppCompatActivity
         UserAdapter usersArray=new UserAdapter(this,users);
         ListView list=findViewById(R.id.list);
         list.setAdapter(usersArray);
+        c.close();
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -78,6 +79,7 @@ public class UsersActivity extends AppCompatActivity
                 Intent intent=new Intent(UsersActivity.this,UserOptionsActivity.class).putExtra("name",n);
 
                 startActivity(intent);
+
             }
         });
     }
