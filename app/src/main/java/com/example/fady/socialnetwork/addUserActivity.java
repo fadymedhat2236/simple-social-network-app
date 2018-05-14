@@ -39,6 +39,9 @@ public class addUserActivity extends AppCompatActivity {
     public void insertUser(View v) {
         String n = name.getText().toString().trim();
         String g = gender.getText().toString().trim().toLowerCase();
+        //clearing the input fields
+        name.setText("");
+        gender.setText("");
         int temp;
         if (g.equals("male")) {
             temp = 1;

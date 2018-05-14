@@ -40,6 +40,13 @@ public class adminActivity extends AppCompatActivity {
 
             }
         });
+        LinearLayout networkAnalysis=findViewById(R.id.analysis);
+        networkAnalysis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
 }

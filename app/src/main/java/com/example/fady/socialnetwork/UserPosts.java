@@ -2,6 +2,7 @@ package com.example.fady.socialnetwork;
 
 import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -198,5 +199,11 @@ public class UserPosts extends AppCompatActivity {
         newLike.put(SnaContract.postsLikes.COLUMN_POST_ID,postId);
         newLike.put(SnaContract.postsLikes.COLUMN_POST_LIKER_ID,userId);
         db.insert(SnaContract.postsLikes.TABLE_NAME,null,newLike);
+    }
+    @Override
+    public void onBackPressed()
+    {
+        Intent i=new Intent(this,MainActivity.class);
+        startActivity(i);
     }
 }

@@ -73,15 +73,18 @@
         </LinearLayout>
 
     </LinearLayout>
-
     <LinearLayout
-        android:id="@+id/viewXML"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#6cde95"
+        android:background="#9cf4bb"
+        android:orientation="horizontal">
+    <LinearLayout
+        android:id="@+id/viewXML"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
         android:orientation="vertical">
-
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -99,11 +102,39 @@
             android:fontFamily="casual"
             android:text="@string/xmlView"
             android:textAllCaps="true"
-            android:textAppearance="?android:textAppearanceMedium"
+            android:textSize="16dp"
             android:textColor="#08080a"
             android:textStyle="bold" />
 
     </LinearLayout>
+        <LinearLayout
+            android:id="@+id/analysis"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_weight="7"
+                android:src="@drawable/network_analysis" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:fontFamily="casual"
+                android:text="@string/analysis"
+                android:textAllCaps="true"
+                android:textSize="16dp"
+                android:textColor="#08080a"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
