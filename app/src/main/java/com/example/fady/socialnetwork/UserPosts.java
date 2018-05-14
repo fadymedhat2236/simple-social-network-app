@@ -1,11 +1,17 @@
 package com.example.fady.socialnetwork;
 
+import android.content.ContentUris;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Adapter;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.fady.socialnetwork.data.SnaContract;
 import com.example.fady.socialnetwork.data.SnaDbHelper;
@@ -117,5 +123,58 @@ public class UserPosts extends AppCompatActivity {
         list.setAdapter(postsArray);
         c.close();
 
+    }
+    public void likePost(View v)
+    {
+        LinearLayout postParentRow = (LinearLayout)v.getParent();
+        Button childBtn=(Button) postParentRow.getChildAt(1);
+        TextView childNumber=(TextView) postParentRow.getChildAt(2);
+        String number=childNumber.getText().toString();
+        String []numberseq=number.split(" ");
+        int number_=Integer.parseInt(numberseq[0]);
+        childNumber.setText((number_+1)+" Likes");
+        childBtn.setBackgroundColor(0x55000000);
+        childBtn.setText("Liked");
+        childBtn.setClickable(false);
+        //getting the post owner name
+        LinearLayout postParent=(LinearLayout)postParentRow.getParent();
+        LinearLayout postFirstChild=(LinearLayout) postParent.getChildAt(0);
+        TextView postOwnerName=(TextView)postFirstChild.getChildAt(1);
+        String postOwner=postOwnerName.getText().toString().toLowerCase();
+
+        SnaDbHelper dbHelper=new SnaDbHelper(this);
+        SQLiteDatabase db=dbHelper.getReadableDatabase();
+        String[] projection1= {
+                        SnaContract.UsersEntry._ID
+                };
+        String[] selArgs1={postOwner};
+        Cursor c1=db.query(SnaContract.UsersEntry.TABLE_NAME,
+                projection1,SnaContract.UsersEntry.COLUMN_USER_NAME+"=?",
+                selArgs1,null,null,null);
+        c1.moveToNext();
+        int idcolomnindex=c1.getColumnIndex(SnaContract.UsersEntry._ID);
+        int userId=c1.getInt(idcolomnindex);
+        c1.close();
+        //getting the post id
+        LinearLayout postSecondChild=(LinearLayout) postParent.getChildAt(1);
+        TextView postTextView=(TextView)postSecondChild.getChildAt(0);
+        String postText=postTextView.getText().toString();
+        String[] projection2={
+                SnaContract.postsEntry._ID
+        };
+        String[] selArgs2={postText};
+        Cursor c2=db.query(SnaContract.postsEntry.TABLE_NAME,
+                projection2,SnaContract.postsEntry.COLUMN_POST_TEXT+"=?",
+                selArgs2,null,null,null);
+        c2.moveToNext();
+        idcolomnindex=c2.getColumnIndex(SnaContract.postsEntry._ID);
+        int postId=c2.getInt(idcolomnindex);
+        c2.close();
+        //add them to postLikes database
+        db=dbHelper.getWritableDatabase();
+        ContentValues newLike=new ContentValues();
+        newLike.put(SnaContract.postsLikes.COLUMN_POST_ID,postId);
+        newLike.put(SnaContract.postsLikes.COLUMN_POST_LIKER_ID,userId);
+        db.insert(SnaContract.postsLikes.TABLE_NAME,null,newLike);
     }
 }

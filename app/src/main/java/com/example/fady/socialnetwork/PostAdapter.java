@@ -28,9 +28,6 @@ public class PostAdapter extends ArrayAdapter<Post>
             listItemView= LayoutInflater.from(getContext()).inflate(R.layout.post_item,parent,false);
         }
 
-        //ImageView userPhoto=listItemView.findViewById(R.id.userPhoto);
-        //userPhoto.setImageResource(R.drawable.user_man);
-
 
         TextView postOwnerName=listItemView.findViewById(R.id.postOwner);
         postOwnerName.setText(currentPost.getName());
