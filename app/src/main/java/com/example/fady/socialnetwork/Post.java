@@ -9,18 +9,21 @@ import java.util.ArrayList;
 public class Post {
     private String postText;
     private String name;
-    private ArrayList<String> likersNames;
+    private int numberOfLikes;
+    private boolean isLiked;
     public Post()
     {
         postText="";
         name="";
-        likersNames=new ArrayList<String>();
+        numberOfLikes=0;
+        isLiked=false;
     }
-    public Post(String name,String text)
+    public Post(String name,String text,int numberOflikes,boolean isLiked)
     {
         postText=text;
         this.name=name;
-        likersNames=new ArrayList<String>();
+        this.numberOfLikes=numberOflikes;
+        this.isLiked=isLiked;
     }
     public String getPostText() {
         return postText;
@@ -38,15 +41,19 @@ public class Post {
         this.name = name;
     }
 
-    public ArrayList<String> getLikersNames() {
-        return likersNames;
+    public int getNumberOfLikes() {
+        return numberOfLikes;
     }
 
-    public void setLikersNames(ArrayList<String> likersNames) {
-        this.likersNames = likersNames;
+    public void setNumberOfLikes(int numberOfLikes) {
+        this.numberOfLikes = numberOfLikes;
     }
-    public int getPostLikesNo()
-    {
-        return likersNames.size();
+
+    public boolean isLiked() {
+        return isLiked;
+    }
+
+    public void setLiked(boolean liked) {
+        isLiked = liked;
     }
 }

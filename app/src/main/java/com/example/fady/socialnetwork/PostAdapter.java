@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,7 +37,13 @@ public class PostAdapter extends ArrayAdapter<Post>
         postText.setText(currentPost.getPostText());
 
         TextView postNoOfLikes=listItemView.findViewById(R.id.postLikes);
-        postNoOfLikes.setText(currentPost.getPostLikesNo()+" Likes");
+        postNoOfLikes.setText(currentPost.getNumberOfLikes()+" Likes");
+
+        Button likeButton=listItemView.findViewById(R.id.like_button);
+        if(currentPost.isLiked())
+        {
+            likeButton.setVisibility(View.INVISIBLE);
+        }
 
         return listItemView;
     }

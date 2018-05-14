@@ -19,7 +19,7 @@ import com.example.fady.socialnetwork.data.SnaDbHelper;
 import java.util.ArrayList;
 
 public class UserPosts extends AppCompatActivity {
-
+    private String name;
     public static final int PET_LOADER = 0;
 
     private ArrayList<Post> posts;
@@ -30,7 +30,7 @@ public class UserPosts extends AppCompatActivity {
 
 
         //to view the posts
-        String name=getIntent().getExtras().getString("name","default");
+        this.name=getIntent().getExtras().getString("name","default");
         this.setTitle("this is "+name+"'s posts");
         SnaDbHelper dbHelper=new SnaDbHelper(this);
         SQLiteDatabase db=dbHelper.getReadableDatabase();
@@ -93,6 +93,7 @@ public class UserPosts extends AppCompatActivity {
         posts=new ArrayList<Post>();
 
         String [] projection3={
+                SnaContract.postsEntry._ID,
                 SnaContract.postsEntry.COLUMN_POST_OWNER_ID,
                 SnaContract.postsEntry.COLUMN_POST_TEXT
         };
@@ -111,8 +112,31 @@ public class UserPosts extends AppCompatActivity {
 
                 int nameColumnIndex=c3.getColumnIndex(SnaContract.postsEntry.COLUMN_POST_TEXT);
                 String text=c3.getString(nameColumnIndex);
-                posts.add(new Post(names.get(i),text));
+                int postIdColumnIndex=c3.getColumnIndex(SnaContract.postsEntry._ID);
+                int postId=c3.getInt(postIdColumnIndex);
+                //at this point we have the ID of a certain post->we should read the database where Id=postId
+                    String []projection4={SnaContract.postsLikes.COLUMN_POST_LIKER_ID};
+                    String [] selArgs4={Integer.toString(postId)};
+                    Cursor c4=db.query(SnaContract.postsLikes.TABLE_NAME,
+                            projection4,
+                            SnaContract.postsLikes.COLUMN_POST_ID+"=?",
+                            selArgs4,
+                            null,null,null);
+                    boolean isLiked=false;
+                    while(c4.moveToNext())
+                    {
+                        int temp=c4.getColumnIndex(SnaContract.postsLikes.COLUMN_POST_LIKER_ID);
+                        int postLikerId=c4.getInt(temp);
+                        if(postLikerId==userId)
+                        {
+                            isLiked=true;
+                            break;
+                        }
+                    }
+                posts.add(new Post(names.get(i),text,c4.getCount(),isLiked));
+                c4.close();
             }
+            c3.close();
         }
 
 
@@ -138,16 +162,14 @@ public class UserPosts extends AppCompatActivity {
         childBtn.setClickable(false);
         //getting the post owner name
         LinearLayout postParent=(LinearLayout)postParentRow.getParent();
-        LinearLayout postFirstChild=(LinearLayout) postParent.getChildAt(0);
-        TextView postOwnerName=(TextView)postFirstChild.getChildAt(1);
-        String postOwner=postOwnerName.getText().toString().toLowerCase();
+
 
         SnaDbHelper dbHelper=new SnaDbHelper(this);
         SQLiteDatabase db=dbHelper.getReadableDatabase();
         String[] projection1= {
                         SnaContract.UsersEntry._ID
                 };
-        String[] selArgs1={postOwner};
+        String[] selArgs1={this.name};
         Cursor c1=db.query(SnaContract.UsersEntry.TABLE_NAME,
                 projection1,SnaContract.UsersEntry.COLUMN_USER_NAME+"=?",
                 selArgs1,null,null,null);
