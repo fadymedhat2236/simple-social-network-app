@@ -44,7 +44,8 @@ public class adminActivity extends AppCompatActivity {
         networkAnalysis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i2=new Intent(v.getContext(),analysisOptions.class);
+                startActivity(i2);
             }
         });
 

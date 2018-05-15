@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.fady.socialnetwork.analysisOptions"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/likesSort"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        android:layout_margin="5dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:src="@drawable/likesort"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="sort by likes"
+            android:textSize="20dp"
+            android:layout_gravity="center"
+            android:textColor="#126395"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/postsSort"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        android:layout_margin="5dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:src="@drawable/postssort"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="sort by posts"
+            android:textSize="20dp"
+            android:layout_gravity="center"
+            android:textColor="#f37670"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/friendsSort"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        android:layout_margin="5dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:src="@drawable/freindssort"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="sort by friends"
+            android:textSize="20dp"
+            android:layout_gravity="center"
+            android:textColor="#02aeef"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
