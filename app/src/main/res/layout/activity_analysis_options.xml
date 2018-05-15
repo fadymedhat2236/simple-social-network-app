@@ -8,10 +8,10 @@
     tools:context="com.example.fady.socialnetwork.analysisOptions"
     android:orientation="vertical">
     <LinearLayout
+        android:id="@+id/likesSort"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:id="@+id/likesSort"
         android:orientation="vertical"
         android:background="#ffffff"
         android:layout_margin="5dp">
@@ -33,10 +33,10 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/postsSort"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:id="@+id/postsSort"
         android:orientation="vertical"
         android:background="#ffffff"
         android:layout_margin="5dp">
@@ -57,10 +57,10 @@
 
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/friendsSort"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:id="@+id/friendsSort"
         android:orientation="vertical"
         android:background="#ffffff"
         android:layout_margin="5dp">

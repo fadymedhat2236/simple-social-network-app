@@ -29,7 +29,10 @@
         <activity android:name=".addFriendList" />
         <activity android:name=".showFriends" />
         <activity android:name=".analysisOptions" />
-        <activity android:name=".usersGraph"></activity>
+        <activity android:name=".usersGraph" />
+        <activity android:name=".sortByLikes" />
+        <activity android:name=".sortByFriends" />
+        <activity android:name=".sortByPosts"></activity>
     </application>
 
 </manifest>
