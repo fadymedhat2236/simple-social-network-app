@@ -71,7 +71,7 @@ public class UserOptionsActivity extends AppCompatActivity {
             }
         });
 
-        //sugget friends
+        //suggest friends
         LinearLayout suggestFriends=findViewById(R.id.suggest_friend);
         suggestFriends.setOnClickListener(new View.OnClickListener() {
             @Override

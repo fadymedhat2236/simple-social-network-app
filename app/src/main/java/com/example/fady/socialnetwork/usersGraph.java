@@ -19,26 +19,55 @@ ArrayList<userField> fields;
         setContentView(R.layout.activity_users_graph);
         SnaDbHelper dbHelper=new SnaDbHelper(this);
         SQLiteDatabase db=dbHelper.getReadableDatabase();
+        String name=getIntent().getExtras().getString("name","default");
 
         fields=new ArrayList<userField>();
-
+        ArrayList<Node> nodes=new ArrayList<>();
+        //getting the parent id
         String [] projection={
                 SnaContract.UsersEntry._ID,
-                SnaContract.UsersEntry.COLUMN_USER_NAME,
-                SnaContract.UsersEntry.COLUMN_USER_GENDER,
-                SnaContract.UsersEntry.COLUMN_USER_NUMBER_OF_POSTS,
-                SnaContract.UsersEntry.COLUMN_USER_NUMBER_OF_FRIENDS
         };
-
-        Cursor c=db.query(SnaContract.UsersEntry.TABLE_NAME,projection,null,null,
+        String[] selArgs={name};
+        Cursor c=db.query(SnaContract.UsersEntry.TABLE_NAME,projection,
+                SnaContract.UsersEntry.COLUMN_USER_NAME+"=?",
+                selArgs,
                 null,null,null);
-
-        while(c.moveToNext())
+        c.moveToNext();
+        int idColumnIndex=c.getColumnIndex(SnaContract.UsersEntry._ID);
+        int parentId=c.getInt(idColumnIndex);
+        c.close();
+        Graph graph=new Graph(new Node(parentId));
+        //getting the rest of the network ids
+        Cursor c2=db.query(
+                SnaContract.UsersEntry.TABLE_NAME,projection,
+                SnaContract.UsersEntry.COLUMN_USER_NAME+"!=?",
+                selArgs,null,null,null
+        );
+        while(c2.moveToNext())
         {
-            int nameColumnIndex=c.getColumnIndex(SnaContract.UsersEntry.COLUMN_USER_NAME);
-            String name=c.getString(nameColumnIndex);
-
-            fields.add(new userField(name,"min path=1",1));
+            idColumnIndex=c2.getColumnIndex(SnaContract.UsersEntry._ID);
+            int friendId=c2.getInt(idColumnIndex);
+            graph.addToNetwork(new Node(friendId));
+        }
+        c2.close();
+        graph.constructGraph(db);
+        nodes=graph.getNear();
+        int counter=1;
+        for(int i=0;i<nodes.size();i++)
+        {
+            String[] projection2={SnaContract.UsersEntry.COLUMN_USER_NAME};
+            String[] selArgs2={Integer.toString(nodes.get(i).getId())};
+            Cursor c3=db.query(
+                    SnaContract.UsersEntry.TABLE_NAME,projection2,
+                    SnaContract.UsersEntry._ID+"=?",selArgs2,
+                    null,null,null
+            );
+            c3.moveToNext();
+            int nameColumnIndex=c3.getColumnIndex(SnaContract.UsersEntry.COLUMN_USER_NAME);
+            String username=c3.getString(nameColumnIndex);
+            c3.close();
+            fields.add(new userField(username,"min path: "+Integer.toString(nodes.get(i).getDistance()),counter));
+            counter++;
         }
         UserFieldAdapter fieldsArray=new UserFieldAdapter(this,fields);
         ListView list=findViewById(R.id.fieldList);
