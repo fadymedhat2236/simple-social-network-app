@@ -71,5 +71,15 @@ public class UserOptionsActivity extends AppCompatActivity {
             }
         });
 
+        //sugget friends
+        LinearLayout suggestFriends=findViewById(R.id.suggest_friend);
+        suggestFriends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(v.getContext(),usersGraph.class).putExtra("name",userName);
+                startActivity(i);
+            }
+        });
+
     }
 }

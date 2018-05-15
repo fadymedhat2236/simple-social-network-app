@@ -28,7 +28,8 @@
         <activity android:name=".UserPosts" />
         <activity android:name=".addFriendList" />
         <activity android:name=".showFriends" />
-        <activity android:name=".analysisOptions"></activity>
+        <activity android:name=".analysisOptions" />
+        <activity android:name=".usersGraph"></activity>
     </application>
 
 </manifest>
