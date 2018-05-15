@@ -157,8 +157,10 @@ public class userXml extends AppCompatActivity {
                         SnaContract.postsEntry.COLUMN_POST_OWNER_ID+"=?",
                         selArgs3,
                         null,null,null);
-                if(c7.getCount()==0)
+                if(c7.getCount()==0) {
+                    buffer.append("            </posts>"+"\n");
                     continue;
+                }
                 while(c7.moveToNext())
                 {
 
@@ -176,7 +178,6 @@ public class userXml extends AppCompatActivity {
 
         c.close();
 
-            buffer.append("\n");
             buffer.append("</Users>");
 
             XML.setText(buffer.toString());
