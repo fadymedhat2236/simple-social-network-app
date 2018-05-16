@@ -74,8 +74,9 @@ public class addPostActivity extends AppCompatActivity {
           newNoOfPosts.put(SnaContract.UsersEntry.COLUMN_USER_NUMBER_OF_POSTS,nop+1);
           String[] selArgs2={Integer.toString(userID)};
           db.update(SnaContract.UsersEntry.TABLE_NAME,newNoOfPosts,SnaContract.UsersEntry._ID+"=?",selArgs2);
-          Intent i=new Intent(this,UsersActivity.class);
-          startActivity(i);
+          postBody.setText("");
+//          Intent i=new Intent(this,UsersActivity.class);
+//          startActivity(i);
       }
       else
       {
@@ -86,7 +87,13 @@ public class addPostActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    public void onBackPressed()
+    {
+        Intent i=new Intent(this,MainActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
+    }
 
 
 }

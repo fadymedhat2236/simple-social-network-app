@@ -16,7 +16,7 @@ public class adminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
         LinearLayout addUser=findViewById(R.id.add_user);
-        LinearLayout deleteUser=findViewById(R.id.delete_user);
+       // LinearLayout deleteUser=findViewById(R.id.delete_user);
         addUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -24,13 +24,13 @@ public class adminActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        deleteUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i =new Intent(view.getContext(),deleteUserActivity.class);
-                startActivity(i);
-            }
-        });
+//        deleteUser.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i =new Intent(view.getContext(),deleteUserActivity.class);
+//                startActivity(i);
+//            }
+//        });
         LinearLayout XML_user=findViewById(R.id.viewXML);
         XML_user.setOnClickListener(new View.OnClickListener() {
             @Override

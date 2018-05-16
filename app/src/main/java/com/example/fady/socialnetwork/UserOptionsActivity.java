@@ -33,13 +33,13 @@ public class UserOptionsActivity extends AppCompatActivity {
         });
 
         //delete friends activity
-        LinearLayout DeleteFriends=findViewById(R.id.delete_friends);
-        DeleteFriends.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+//        LinearLayout DeleteFriends=findViewById(R.id.delete_friends);
+//        DeleteFriends.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
 
         //add posts activity
         LinearLayout AddPosts=findViewById(R.id.add_post);
